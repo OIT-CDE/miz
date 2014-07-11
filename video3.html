@@ -1,0 +1,141 @@
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <link href="./video-js/video-js.css" rel="stylesheet">
+    <script src="./video-js/video.js"></script>
+    <style type="text/css">
+
+    <!--
+    #index {
+        margin-top: 1.5em;
+        position: relative;
+        float: left;
+        background: #fdd;
+        padding: 0.5em;
+    }
+
+    #index li {
+        line-height: 150%;
+    }
+
+    #index a:hover {
+        color: #f00;
+        background: #ffd;
+    }
+
+
+    #main {
+        position: relative;
+        margin-left: 2em;
+        text-align: left;
+        float: left;
+    }
+    #main p{
+        margin-top: 1.5em;
+    }
+
+    #footer {
+        clear:both;
+        text-align: right;
+    }
+
+    -->
+    </style>
+
+    <script type="text/javascript">
+
+
+    function large(){
+        var player = videojs("video");
+        var w=player.width();
+        var h=player.height();
+        player.width(w*1.1);
+        player.height(h*1.1);
+    }
+
+    function small(){
+        var player = videojs("video");
+        var w=player.width();
+        var h=player.height();
+        player.width(w*0.9);
+        player.height(h*0.9);
+    }
+
+    function forward(sec){
+        var player = videojs("video");
+        var t=player.currentTime();
+        var end=player.duration() - 1;
+        player.currentTime(Math.min(t+sec, end));
+    }
+
+    function backward(sec){
+        var player = videojs("video");
+        var t=player.currentTime();
+        player.currentTime(Math.max(t-sec, 0));
+    }
+
+    function jump(sec){
+        var player = videojs("video");
+        player.currentTime(sec);
+    }
+    </script>
+
+
+    <title>ポインタの復習</title>
+
+</head>
+
+<body>
+
+
+
+<div class="top">
+
+<div id="index">
+    <ul>
+        <li> <a href="javascript:jump(12)">ポインタの雰囲気</a>
+        <li> <a href="javascript:jump(42)">メモリのイメージとプログラム</a>
+        <li> <a href="javascript:jump(135)">矢印の意味</a>
+        <li> <a href="javascript:jump(164)">構造体変数を指すポインタ</a>
+        <li> <a href="javascript:jump(230)">連結リストに向けて</a>
+    </ul>
+
+    <form>
+        <button type="button"  onclick="small()">縮小</button>
+        <button type="button"  onclick="large()">拡大</button>
+        <br>
+        <button type="button" onclick="backward(10)">10秒戻る</button>
+        <button type="button" onclick="forward(10)">10秒進む</button>
+    </form>
+</div>
+
+<div id="main">
+    <p>
+    <video id="video" class="video-js vjs-default-skin" 
+           controls
+           preload="auto" 
+           width="640" height="480" 
+           poster="title3.png" 
+           data-setup='{"example_option":true}'>
+           <source src="test.mp4" type='video/mp4' />
+    </p>
+
+    <p>
+    ブラウザ上で再生できない場合は
+    <a href="test_DL.mp4">こちら</a>
+    からダウンロードして，手元のプレイヤーで再生してください．
+    </p>
+</div>
+
+<div id="footer">
+最終更新日: 2014/06/25(木) 20:30:53
+</div>
+
+</div>
+
+
+<br><br>
+<br><br>
+<br><br>
+</body>
+</html>
